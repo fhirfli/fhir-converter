@@ -1,0 +1,30 @@
+{
+  "name": "fhir-converter",
+  "version": "1.0.0",
+  "description": "convert health & lifestyle data into FHIR format",
+  "main": "fhir-converter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakaloumenos/fhir-converter.git"
+  },
+  "keywords": [
+    "fhir",
+    "converter",
+    "fitbit",
+    "fitness",
+    "lifestyle",
+    "data"
+  ],
+  "author": "Nikolaos Alexandros Kaloumenos <nakaloumenos@gmail.com> (http://goo.gl/ziVI2h)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nakaloumenos/fhir-converter/issues"
+  },
+  "homepage": "https://github.com/nakaloumenos/fhir-converter#readme",
+  "dependencies": {
+    "data-model-mapper-plus": "^1.0.1"
+  }
+}
