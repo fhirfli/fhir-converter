@@ -6,3 +6,8 @@ exports.createBundle = function (resource) {
 	var result = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, resource];
 	return result;
 };
+
+exports.createObservation = function () {
+	var result = [];
+	return result;
+}
