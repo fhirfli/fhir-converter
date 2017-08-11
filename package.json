@@ -1,6 +1,6 @@
 {
   "name": "fhir-converter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "convert health & lifestyle data into FHIR format",
   "main": "fhir-converter.js",
   "scripts": {
