@@ -15,6 +15,11 @@ var getFatResources = function (fatLogs) {
 
 var createFatObservation = function (fatLog) {
   var result = {
+    fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b3",
+    request: {
+      method: "POST",
+      url: "Observation"
+    },
     request: {
       method: "POST",
       url: "Observation"

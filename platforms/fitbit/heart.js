@@ -1,7 +1,7 @@
 var util = require('../../utilities.js');
 
 exports.map = function (heartLogs) {
-  var result =  util.createBundle(getHeartResources(heartLogs));
+  var result = util.createBundle(getHeartResources(heartLogs));
   return result;
 }
 
@@ -15,51 +15,63 @@ var getHeartResources = function (heartLogs) {
 
 var createHeartObservation = function (heartLog) {
   var result = {
-    resourceType: "Observation",
-    id: "heart-rate",
-    meta: {
-      profile: [
-        "http://hl7.org/fhir/StructureDefinition/vitalsigns"
-      ]
+    fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b3",
+    request: {
+      method: "POST",
+      url: "Observation"
     },
-    status: "final",
-    issued: heartLog.dateTime,
-    category: [
-      {
+    request: {
+      method: "POST",
+      url: "Observation"
+    },
+    resource: {
+
+      resourceType: "Observation",
+      id: "heart-rate",
+      meta: {
+        profile: [
+          "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+        ]
+      },
+      status: "final",
+      issued: heartLog.dateTime=="today"?"1997-07-16":heartLog.dateTime,
+      category: [
+        {
+          coding: [
+            {
+              system: "http://hl7.org/fhir/observation-category",
+              code: "fitness",
+              display: "Fitness data"
+            }
+          ],
+          text: "Fitness data"
+        }
+      ],
+      code: {
         coding: [
           {
-            system: "http://hl7.org/fhir/observation-category",
-            code: "fitness",
-            display: "Fitness data"
-          }
-        ],
-        text: "Fitness data"
+            system: "http://loinc.org",
+            code: "8867-4",
+            display: "Heart Rate"
+          },
+          {
+            system: "http://snomed.info/sct",
+            code: "364075005",
+            display: "Heart Rate"
+          }   
+        ]
+      },
+      subject: {
+        reference: "Patient/example"
+      },
+      effectiveDateTime: "today"?"1997-07-16":heartLog.dateTime,
+      valueQuantity: {
+        value: heartLog.value.hasOwnProperty('restingHeartRate')?heartLog.value.restingHeartRate:parseFloat(heartLog.value),
+        unit: "beats/minute",
+        system: "http://unitsofmeasure.org",
+        code: "/min"
       }
-    ],
-    code: {
-      coding: [
-        {
-          system: "http://loinc.org",
-          code: "8867-4",
-          display: "Heart Rate"
-        },
-        {
-          system: "http://snomed.info/sct",
-          code: "364075005",
-          display: "Heart Rate"
-        }   
-      ]
-    },
-    subject: {
-      reference: "Patient/example"
-    },
-    effectiveDateTime: heartLog.dateTime,
-    valueQuantity: {
-      value: heartLog.value.hasOwnProperty('restingHeartRate')?heartLog.value.restingHeartRate:heartLog.value,
-      unit: "beats/minute",
-      system: "http://unitsofmeasure.org",
-      code: "/min"
     }
-  };
+  }
   return result;
 }
