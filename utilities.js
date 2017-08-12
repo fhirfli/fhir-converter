@@ -7,7 +7,8 @@ exports.createBundle = function (resource) {
 	return result;
 };
 
-exports.createObservation = function () {
-	var result = [];
+exports.createObservation = function (id, issued, category, code, effectiveDatetime, valueQuantity) {
+	var result = ['Observation', id, 'final', issued, category, code, effectiveDatetime, valueQuantity];
 	return result;
 }
+

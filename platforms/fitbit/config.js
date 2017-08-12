@@ -1,13 +1,15 @@
 var DMM = require('data-model-mapper-plus');
 var util = require('../../utilities.js');
 var fat = require('./fat.js');
+var sleep = require('./sleep.js');
+var heart = require('./heart.js');
 
 var conf = [
-    // {
-    //     dest: util.observation,
-    //     src: 'activities-heart',
-    //     map: mapHeartActivity
-    // },
+    {
+        dest: util.bundle,
+        src: 'activities-heart',
+        map: heart.map
+    },
     // {
     //     dest: util.observation,
     //     src: 'weightLog',
@@ -16,7 +18,7 @@ var conf = [
     // {
     //     dest: util.bundle,
     //     src: 'sleep',
-    //     map: mapSleep
+    //     map: sleep.map
     // },
     {
         dest: util.bundle,
