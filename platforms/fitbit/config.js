@@ -15,11 +15,11 @@ var conf = [
     //     src: 'weightLog',
     //     map: mapWeightLog
     // },
-    // {
-    //     dest: util.bundle,
-    //     src: 'sleep',
-    //     map: sleep.map
-    // },
+    {
+        dest: util.bundle,
+        src: 'sleep',
+        map: sleep.map
+    },
     {
         dest: util.bundle,
         src: 'fat',

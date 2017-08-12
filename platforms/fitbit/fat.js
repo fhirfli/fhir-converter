@@ -6,11 +6,11 @@ exports.map = function (fatLogs) {
 }
 
 var getFatResources = function (fatLogs) {
-    var observations = [];
-    fatLogs.forEach(function(fatLog) {
-        observations.push(createFatObservation(fatLog));
-    });
-    return observations;
+  var observations = [];
+  fatLogs.forEach(function(fatLog) {
+    observations.push(createFatObservation(fatLog));
+  });
+  return observations;
 }
 
 var createFatObservation = function (fatLog) {

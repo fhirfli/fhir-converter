@@ -6,11 +6,11 @@ exports.map = function (heartLogs) {
 }
 
 var getHeartResources = function (heartLogs) {
-    var observations = [];
-    heartLogs.forEach(function(heartLog) {
-        observations.push(createHeartObservation(heartLog));
-    });
-    return observations;
+  var observations = [];
+  heartLogs.forEach(function(heartLog) {
+      observations.push(createHeartObservation(heartLog));
+  });
+  return observations;
 }
 
 var createHeartObservation = function (heartLog) {
@@ -34,7 +34,7 @@ var createHeartObservation = function (heartLog) {
         ]
       },
       status: "final",
-      issued: heartLog.dateTime=="today"?"1997-07-16":heartLog.dateTime,
+      issued: heartLog.dateTime=="today"?"2017-08-03":heartLog.dateTime,
       category: [
         {
           coding: [
@@ -64,7 +64,7 @@ var createHeartObservation = function (heartLog) {
       subject: {
         reference: "Patient/example"
       },
-      effectiveDateTime: "today"?"1997-07-16":heartLog.dateTime,
+      effectiveDateTime: "today"?"2017-08-10":heartLog.dateTime,
       valueQuantity: {
         value: heartLog.value.hasOwnProperty('restingHeartRate')?heartLog.value.restingHeartRate:parseFloat(heartLog.value),
         unit: "beats/minute",
