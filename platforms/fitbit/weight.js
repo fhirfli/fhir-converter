@@ -36,7 +36,7 @@ exports.mapWeight = function (weightLogs) {
 var getWeightResources = function (weightLogs) {
 	var observations = [];
   	weightLogs.forEach(function(weightLog) {
-    	observations.push(fat.createBmiObservation(weightLog));
+    	observations.push(createBmiObservation(weightLog));
     	observations.push(createWeight(weightLog));
   	});
   	return observations;
@@ -101,6 +101,7 @@ var createBmiObservation = function (weightLog) {
   			}
 		}
 	}
+	return result;
 }
 
 var createWeight = function (weightLog) {
@@ -162,6 +163,7 @@ var createWeight = function (weightLog) {
   			}
 		}
 	}
+	return result;
 }
 	
   

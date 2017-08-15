@@ -20,7 +20,7 @@ var conf = [
         dest: util.bundle,
         src: 'weight',
         map: weight.mapWeight
-    }
+    },
     {
         dest: util.bundle,
         src: 'sleep',
