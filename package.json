@@ -2,7 +2,7 @@
   "name": "fhir-converter",
   "version": "1.1.1",
   "description": "convert health & lifestyle data into FHIR format",
-  "main": "fhir-converter.js",
+  "main": "lib/fhir-converter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +16,9 @@
     "fitbit",
     "fitness",
     "lifestyle",
-    "data"
+    "data",
+    "mapper",
+    "mapping"
   ],
   "author": "Nikolaos Alexandros Kaloumenos <nakaloumenos@gmail.com> (http://goo.gl/ziVI2h)",
   "license": "MIT",
