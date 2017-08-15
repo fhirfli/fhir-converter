@@ -9,7 +9,6 @@ var getSleepResources = function (sleepLogs) {
     var observations = [];
     sleepLogs.forEach(function(sleepLog) {
       if (sleepLog.type == "stages") {
-        //observations.push(createSleepBundle(sleepLog)); 
         observations.push(createSleepDiagnosticReport(sleepLog));
         observations.push(createSleepObservation('lightsleep', sleepLog.levels.summary.light.count, sleepLog.levels.summary.light.minutes));
         observations.push(createSleepObservation('wakesleep', sleepLog.levels.summary.wake.count, sleepLog.levels.summary.wake.minutes));
