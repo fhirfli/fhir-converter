@@ -17,66 +17,66 @@ var sleepLog = {
     "sleep": [
         {
             "dateOfSleep": "2017-04-02",
-            "duration": 300,
-            "efficiency": 10,
-            "isMainSleep": true,
+            "duration": <value in milliseconds>,
+            "efficiency": <value>,
+            "isMainSleep": <true|false>,
             "levels": {
                 "summary": {
                     "deep": {
-                        "count": 1,
-                        "minutes": 11,
-                        "thirtyDayAvgMinutes": 111
+                        "count": <value>,
+                        "minutes": <value>,
+                        "thirtyDayAvgMinutes": <value>
                     },
                     "light": {
-                        "count": 2,
-                        "minutes": 22,
-                        "thirtyDayAvgMinutes": 222
+                        "count": <value>,
+                        "minutes": <value>,
+                        "thirtyDayAvgMinutes": <value>
                     },
                     "rem": {
-                        "count": 3,
-                        "minutes": 33,
-                        "thirtyDayAvgMinutes": 333
+                        "count": <value>,
+                        "minutes": <value>,
+                        "thirtyDayAvgMinutes": <value>
                     },
                     "wake": {
-                        "count": 4,
-                        "minutes": 44,
-                        "thirtyDayAvgMinutes": 444
+                        "count": <value>,
+                        "minutes": <value>,
+                        "thirtyDayAvgMinutes": <value>
                     }
                 },
                 "data": [
                     {
                         "datetime": "2017-04-01T23:58:30.000",
                         "level": "wake",
-                        "seconds": 0
+                        "seconds": <value>
                     },
                     {
                         "datetime": "2017-04-02T00:16:30.000",
                         "level": "rem",
-                        "seconds": 0
+                        "seconds": <value>
                     }
                 ],
                 "shortData": [
                     {
                         "datetime": "2017-04-02T05:58:30.000",
                         "level": "wake",
-                        "seconds": 0
+                        "seconds": <value>
                     }
                 ]
             },
-            "logId": 0,
-            "minutesAfterWakeup": 0,
-            "minutesAsleep": 0,
-            "minutesAwake": 0,
-            "minutesToFallAsleep": 0, // this is generally 0 for autosleep created sleep logs
+            "logId": <value>,
+            "minutesAfterWakeup": <value>,
+            "minutesAsleep": <value>,
+            "minutesAwake": <value>,
+            "minutesToFallAsleep": <value>, // this is generally 0 for autosleep created sleep logs
             "startTime": "2017-04-01T23:58:30.000",
-            "timeInBed": 0,
+            "timeInBed": <value in minutes>,
             "type": "stages"
         }
     ],
     "summary": {
-        "totalMinutesAsleep": 0,
-        "totalSleepRecords": 2,
-        "totalTimeInBed": 0
+        "totalMinutesAsleep": <value>,
+        "totalSleepRecords": 1,
+        "totalTimeInBed": <value in minutes>
     }
 };
 
