@@ -1,49 +1,20 @@
-const util = require('../../utilities.js');
-const fat = require('./fat.js');
+const assert = require('chai').assert;
+const weight = require('../../../lib/platforms/fitbit/weight.js');
 
-exports.mapWeightLog = function (weightLogs) {
-  	var result = util.createBundle(getWeightLogResources(weightLogs));
-  	return result;
-}
+// Results
 
-var getWeightLogResources = function (weightLogs) {
-  if (Array.isArray(weightLogs)) {
-  	return getMultipleWeightLogResources(weightLogs);
-  }
-  return getSingleWeightLogResource(weightLogs);
-}
+weightData = [
+        {
+            "bmi":23.57,
+            "date":"2015-03-05",
+            "logId":1330991999000,
+            "time":"23:59:59",
+            "weight":73,
+            "source": "API"
+        }
+    ];
 
-var getMultipleWeightLogResources = function (weightLogs) {
-	var observations = [];
-  	weightLogs.forEach(function(weightLog) {
-    	observations.push(fat.createFatObservation(weightLog));
-  	});
-  	return observations;
-}
-
-var getSingleWeightLogResource = function (weightLog) {
-	var observations = [];
-  	observations.push(createBmiObservation(weightLog));
-  	observations.push(fat.createFatObservation(weightLog));
-  	return observations;
-}
-
-exports.mapWeight = function (weightLogs) {
-	var result = util.createBundle(getWeightResources(weightLogs));
-  	return result;
-}
-
-var getWeightResources = function (weightLogs) {
-	var observations = [];
-  	weightLogs.forEach(function(weightLog) {
-    	observations.push(createBmiObservation(weightLog));
-    	observations.push(createWeight(weightLog));
-  	});
-  	return observations;
-}
-
-var createBmiObservation = function (weightLog) {
-	var result = {
+fhirWeightData = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
 		fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b2",
     	request: {
       		method: "POST",
@@ -62,7 +33,7 @@ var createBmiObservation = function (weightLog) {
     			]
   			},
   			status: "final",
-  			issued: weightLog.date,
+  			issued: "2015-03-05",
   			category: [
     			{
       				coding: [
@@ -92,20 +63,16 @@ var createBmiObservation = function (weightLog) {
   			subject: {
     			reference: "Patient/example"
   			},
-  			effectiveDateTime: weightLog.date,
+  			effectiveDateTime: "2015-03-05",
   			valueQuantity: {
-    			value: weightLog.bmi,
+    			value: 23.57,
     			unit: "kg/m2",
     			system: "http://unitsofmeasure.org",
     			code: "bmi"
   			}
 		}
-	}
-	return result;
-}
-
-var createWeight = function (weightLog) {
-	var result = {
+	},
+	{
 		fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b3",
     	request: {
       		method: "POST",
@@ -124,7 +91,7 @@ var createWeight = function (weightLog) {
     		]
   			},
   			status: "final",
-  			issued: weightLog.date,
+  			issued: "2015-03-05",
   			category: [
     			{
       				coding: [
@@ -154,14 +121,26 @@ var createWeight = function (weightLog) {
   			subject: {
     			reference: "Patient/example"
   			},
-  			effectiveDateTime: weightLog.date,
+  			effectiveDateTime: "2015-03-05",
   			valueQuantity: {
-    			value: weightLog.weight,
+    			value: 73,
     			unit: "kg",
     			system: "http://unitsofmeasure.org",
     			code: "weight"
   			}
 		}
 	}
-	return result;
-}
+]];
+
+convertedWeightData = weight.mapWeight(weightData);
+
+describe('weight', function(){
+	describe('map', function(){
+		it('map should return a FHIR  object', function(){
+			assert.deepEqual(convertedWeightData, fhirWeightData);
+		});
+	});
+});
+
+
+

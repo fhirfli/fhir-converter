@@ -1,10 +1,10 @@
 {
   "name": "fhir-converter",
   "version": "1.2.0",
-  "description": "convert health & lifestyle data into FHIR format",
+  "description": "Convert health & lifestyle data into FHIR format",
   "main": "lib/fhir-converter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha || true"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,10 @@
   "homepage": "https://github.com/nakaloumenos/fhir-converter#readme",
   "dependencies": {
     "data-model-mapper-plus": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0"
   }
 }
