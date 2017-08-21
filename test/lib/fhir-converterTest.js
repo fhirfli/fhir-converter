@@ -1,9 +1,7 @@
 const assert = require('chai').assert;
 const fhir_converter = require('../../lib/fhir-converter.js');
 
-// Results
-converter = new fhir_converter('fitbit');
-fitbitMap = require('../../lib/platforms/fitbit/config.js');
+// Input Data
 fatData = {
 	fat : [
         {
@@ -16,6 +14,7 @@ fatData = {
     ]
 };
 
+// Expected Data
 convertedFhirFatData = {
 	resourceType: 'Bundle',
 	type: 'transaction',
@@ -58,21 +57,22 @@ convertedFhirFatData = {
   	]
 };
 
+fitbitMap = require('../../lib/platforms/fitbit/config.js');
+
+// Results
+converter = new fhir_converter('fitbit');
 convertedData = converter.convert(fatData);
-//console.log(convertedData);
 
+// Tests
 describe('fhir-converter', function(){
-
-	describe('conf', function(){
-		it('conf should be ', function(){
+	describe('config file', function(){
+		it('converter.conf should be fitibit/config.js', function(){
 			assert.equal(converter.conf, fitbitMap);
 		});
 	});
-
 	describe('convert()', function(){
-		it('convert() should return a FHIR object', function(){
+		it('convert() should return a valid FHIR Bundle', function(){
 			assert.deepEqual(convertedData, convertedFhirFatData);
 		});
 	});
-
 });

@@ -1,9 +1,8 @@
 const assert = require('chai').assert;
 const heart = require('../../../lib/platforms/fitbit/heart.js');
 
-// Results
-
-heartData = [
+// Input Data
+heartDataTypeA = [
         {
             "customHeartRateZones": [],
             "dateTime": '2012-03-05',
@@ -41,7 +40,7 @@ heartData = [
         }
     ];
 
-heartData2 = [
+heartDataTypeB = [
         {
             "dateTime": "today",
             "value": {
@@ -81,7 +80,8 @@ heartData2 = [
         }
     ];
 
-fhirHeartData = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
+// Expected Data
+fhirHeartDataTypeA = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
     fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b3",
     request: {
       method: "POST",
@@ -141,8 +141,7 @@ fhirHeartData = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.9
     }
   }]];
 
-
-fhirHeartData2 = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
+fhirHeartDataTypeB = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
     fullUrl: "urn:uuid:13723207-8864-4465-9840-ff4b522146b3",
     request: {
       method: "POST",
@@ -202,27 +201,20 @@ fhirHeartData2 = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.
     }
   }]];
 
+// Results
+convertedHeartDataTypeA = heart.map(heartDataTypeA);
+convertedHeartDataTypeB = heart.map(heartDataTypeB);
 
-
-result1 = heart.map(heartData);
-
-result2 = heart.map(heartData2);
-
-
+// Tests
 describe('heart', function(){
-
-	describe('map', function(){
-		it('map should return a FHIR  object', function(){
-			assert.deepEqual(result1, fhirHeartData);
+	describe('map() with type A input', function(){
+		it('map() should return a valid FHIR Bundle of heart Observartions', function(){
+			assert.deepEqual(convertedHeartDataTypeA, fhirHeartDataTypeA);
 		});
 	});
-
-  describe('map2', function(){
-    it('map should return a FHIR  object', function(){
-      assert.deepEqual(result2, fhirHeartData2);
+  describe('map() with type B input', function(){
+    it('map() should return a valid FHIR Bundle of heart Observartions', function(){
+      assert.deepEqual(convertedHeartDataTypeB, fhirHeartDataTypeB);
     });
   });
-
 });
-
-

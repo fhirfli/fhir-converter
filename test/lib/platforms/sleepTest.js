@@ -1,8 +1,7 @@
 const assert = require('chai').assert;
 const sleep = require('../../../lib/platforms/fitbit/sleep.js');
 
-// Results
-
+// Input Data
 sleepData = [
         {
             "dateOfSleep": "2017-04-02",
@@ -63,6 +62,7 @@ sleepData = [
         }
     ];
 
+// Expected Data
 fhirSleepData = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.994Z"}, [{
     fullUrl: 'DiagnosticReport/Sleep-logs',
     request: {
@@ -339,15 +339,14 @@ fhirSleepData = ['Bundle', 'transaction', {"lastUpdated": "2017-08-03T16:12:06.9
   ]
 ];
 
-
+// Results
 convertedSleepData = sleep.map(sleepData);
 
+// Tests
 describe('sleep', function(){
-	describe('map', function(){
-		it('map should return a FHIR  object', function(){
+	describe('map()', function(){
+		it('map() should return a valid FHIR Bundle of sleep Observartions and a Diagnostic Report', function(){
 			assert.deepEqual(convertedSleepData, fhirSleepData);
 		});
 	});
 });
-
-
