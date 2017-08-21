@@ -2,6 +2,7 @@ node_modules
 npm-debug.log
 project
 .idea
+.nyc_output/
 
 # Logs
 logs

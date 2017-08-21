@@ -9,7 +9,7 @@ A javascript FHIR (www.hl7.org/fhir/) converter that transforms data from known 
 ```javascript
 var fhir = require('fhir-converter');
 
-//Creating a converter from Fitbit to FHIR
+// Creating a converter from Fitbit to FHIR
 var converter = new fhir('fitbit');
 
 // Your resource to convert
