@@ -2,6 +2,8 @@
 
 A javascript FHIR (www.hl7.org/fhir/) converter that transforms data from known (and custom) formats into FHIR data.
 
+Currently it supports a mapping from Fitbit's fat, sleep, weight and heart rate logs to FHIR FLI (http://www.fhirdata.exchange).
+
 ## Usage
 
 ### Node
